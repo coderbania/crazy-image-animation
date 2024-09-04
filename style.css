@@ -1,0 +1,70 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+#main{
+    height: 100vh;
+    width: 100vw;  
+    background-color: rgb(29, 8, 8);
+}
+.list{
+    display: flex;
+    position: relative;     
+    top:45%;
+    justify-content:center;
+    transform-style: preserve-3d;
+    transform: perspective(500px);
+}
+.item{
+    transition:.3s;
+    filter: brightness(0.1);
+    
+}
+.item img{
+       height: 100%;
+       width:90px;
+}
+.list .item:hover{
+    filter: brightness(1);
+    transform:translateZ(150px) 
+}
+.list .item:hover + .item{
+    filter: brightness(.6);
+    transform: translateZ(110px)rotateY(30deg);
+}
+.list .item:hover + * + * {
+    filter: brightness(.4);
+    transform: translateZ(60px)rotateY(20deg );
+}
+.list .item:hover + * + * + *{
+    filter: brightness(.2);
+    transform: translateZ(30px)rotateY(10deg );
+}
+.list .item:has(+ *:hover){
+filter: brightness(.6);
+transform: translateZ(110px)rotateY(-30deg);
+}
+.list .item:has(+ * + *:hover){
+    filter: brightness(.4);
+    transform: translateZ(60px)rotateY(-30deg);
+}
+.list .item:has(+ * + * + *:hover){
+    filter: brightness(.2);
+    transform: translateZ(20px)rotateY(-30deg);
+}
+
+/* .list .item:nth-child(9):hover + * {
+transform: translateZ(120px)rotateY(30deg);
+gap: 5px;
+ 
+}
+.list .item:nth-child(2):has(+ *:hover) {
+transform: translateZ(120px)rotateY(-30deg);
+gap: 5px;
+ 
+} */
